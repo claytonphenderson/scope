@@ -1,0 +1,2 @@
+[event:Example] {"thisIsName": "value"}
+[event:Other] {"anotherone": "value2"}

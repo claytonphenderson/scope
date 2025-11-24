@@ -1,0 +1,55 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Output of build tools
+/build/
+bin/
+pkg/
+
+# Vendor directory (if using Go modules)
+vendor/
+
+# Go modules
+go.sum
+
+# Logs
+*.log
+
+# IDE/editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# MacOS
+.DS_Store
+
+# Linux
+*~
+
+# Windows
+Thumbs.db
+ehthumbs.db
+
+# Coverage reports
+coverage.out
+*.coverprofile
+
+# Temporary files
+*.tmp
+*.temp
+
+# Environment files
+.env
+
+# Generated files
+*.generated.go
+
+# Ignore node_modules if used for web frontend
+node_modules/
