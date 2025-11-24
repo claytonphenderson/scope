@@ -1,2 +1,3 @@
 [event:Example] {"thisIsName": "value"}
 [event:Other] {"anotherone": "value2"}
+garbage [event:Late] {"stillHere": true}

@@ -18,7 +18,7 @@ func ReadFromStdIn(ingressCh chan models.DbRecord, wg *sync.WaitGroup) {
 	// reads from stdin
 	for scanner.Scan() {
 		line := strings.TrimSpace(scanner.Text())
-		if !strings.HasPrefix(line, "[event:") {
+		if !strings.Contains(line, "[event:") {
 			continue
 		}
 
@@ -32,7 +32,8 @@ func ReadFromStdIn(ingressCh chan models.DbRecord, wg *sync.WaitGroup) {
 
 func parseEvent(line string) models.DbRecord {
 	eventNameEndIndex := strings.Index(line, "]")
-	eventName := strings.TrimSpace(line[7:eventNameEndIndex])
+	eventNameStartIndex := strings.Index(line, "[event:") + len("[event:")
+	eventName := strings.TrimSpace(line[eventNameStartIndex:eventNameEndIndex])
 	record := strings.TrimSpace(line[eventNameEndIndex+1:])
 	// logger.Info(eventName)
 	// logger.Info(record)
