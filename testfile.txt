@@ -1,3 +1,5 @@
 [event:Example] {"thisIsName": "value"}
 [event:Other] {"anotherone": "value2"}
 garbage [event:Late] {"stillHere": true}
+test[HELLO] [event:Example] {"hey": "there"}
+11-26 10:35:35.805 16774 16934 D MeshSerialInterface-[DECT, LORA]: packet() spi 10: E: [event:lora_timeline]: {"stage": "irq_process_fired" }

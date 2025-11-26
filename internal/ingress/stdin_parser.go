@@ -14,6 +14,8 @@ import (
 // one is provided
 func ReadFromStdIn(ingressCh chan models.DbRecord, wg *sync.WaitGroup) {
 	scanner := bufio.NewScanner(os.Stdin)
+	buf := make([]byte, 0, 1024*1024)
+	scanner.Buffer(buf, 1024*1024)
 
 	// reads from stdin
 	for scanner.Scan() {
@@ -31,12 +33,11 @@ func ReadFromStdIn(ingressCh chan models.DbRecord, wg *sync.WaitGroup) {
 }
 
 func parseEvent(line string) models.DbRecord {
-	eventNameEndIndex := strings.Index(line, "]")
 	eventNameStartIndex := strings.Index(line, "[event:") + len("[event:")
+	sub := strings.SplitAfter(line, "[event:")
+	eventNameEndIndex := strings.Index(sub[1], "]") + len(sub[0])
 	eventName := strings.TrimSpace(line[eventNameStartIndex:eventNameEndIndex])
 	record := strings.TrimSpace(line[eventNameEndIndex+1:])
-	// logger.Info(eventName)
-	// logger.Info(record)
 
 	dbRecord := models.DbRecord{
 		Event:     eventName,

@@ -20,6 +20,8 @@ or you can have logs stream indefinitely to scope with the `--watch` flag
 adb logcat | ./scope --watch
 ```
 
+**Note:** if you grep the output of adb logcat, be sure to use --line-buffered if also using --watch
+
 Then you can query your events using sqlite's json support with `sqlite3 /tmp/scope.db`.  Feel free to point a visualization tool of your choice at this db.
 
 ```
